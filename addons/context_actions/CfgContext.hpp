@@ -11,7 +11,6 @@ class EGVAR(context_menu,actions) {
         insertChildren = QUOTE(_objects call FUNC(getGrenadeActions));
         priority = 70;
     };
-    
     class Behaviour {
         displayName = "$STR_3DEN_Group_Attribute_Behaviour_displayName";
         condition = QUOTE(_groups findIf {units _x findIf {!isPlayer _x} != -1} != -1);
@@ -49,63 +48,6 @@ class EGVAR(context_menu,actions) {
             args = "CARELESS";
         };
     };
-    class CombatMode {
-        displayName = "$STR_3DEN_Group_Attribute_CombatMode_displayName";
-        condition = QUOTE(_groups findIf {units _x findIf {!isPlayer _x} != -1} != -1);
-        icon = QPATHTOF(ui\attack_ca.paa);
-        priority = 58;
-        class Blue {
-            displayName = CSTRING(HoldFire);
-            statement = QUOTE([ARR_2(_groups,_args)] call FUNC(setCombatMode));
-            icon = QPATHTOF(ui\hold_ca.paa);
-            iconColor[] = {1, 0, 0, 1};
-            args = "BLUE";
-        };
-        class Green: Blue {
-            displayName = CSTRING(HoldFireDefend);
-            icon = QPATHTOF(ui\defend_ca.paa);
-            args = "GREEN";
-        };
-        class White: Blue {
-            displayName = CSTRING(HoldFireEngage);
-            icon = QPATHTOF(ui\engage_ca.paa);
-            args = "WHITE";
-        };
-        class Yellow: Blue {
-            displayName = CSTRING(FireAtWill);
-            icon = QPATHTOF(ui\hold_ca.paa);
-            iconColor[] = {1, 1, 1, 1};
-            args = "YELLOW";
-        };
-        class Red: Blue {
-            displayName = CSTRING(FireAtWillEngage);
-            icon = QPATHTOF(ui\engage_ca.paa);
-            iconColor[] = {1, 1, 1, 1};
-            args = "RED";
-        };
-    };
-    class SpeedMode {
-        displayName = "$STR_HC_Menu_Speed";
-        condition = QUOTE(_groups findIf {units _x findIf {!isPlayer _x} != -1} != -1);
-        icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeSpeedMode\normal_ca.paa";
-        priority = 57;
-        class Limited {
-            displayName = "$STR_speed_limited";
-            statement = QUOTE([ARR_2(_groups,_args)] call FUNC(setSpeedMode));
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeSpeedMode\limited_ca.paa";
-            args = "LIMITED";
-        };
-        class Normal: Limited {
-            displayName = "$STR_speed_normal";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeSpeedMode\normal_ca.paa";
-            args = "NORMAL";
-        };
-        class Full: Limited {
-            displayName = "$STR_speed_full";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeSpeedMode\full_ca.paa";
-            args = "FULL";
-        };
-    };
     class Stance {
         displayName = "$STR_A3_RscAttributeUnitPos_Title";
         condition = QUOTE(_objects findIf {alive _x && {_x isKindOf 'CAManBase'} && {!isPlayer _x}} != -1);
@@ -131,44 +73,6 @@ class EGVAR(context_menu,actions) {
             displayName = "$STR_A3_RscAttributeUnitPos_Auto_tooltip";
             icon = QPATHTOF(ui\default_ca.paa);
             args = "AUTO";
-        };
-    };
-    class HealUnits {
-        displayName = "$STR_State_Heal";
-        icon = QPATHTOF(ui\medical_cross_ca.paa);
-        priority = 50;
-        class All {
-            displayName = ECSTRING(common,All);
-            condition = QUOTE([ARR_2(_objects,_args)] call FUNC(canHealUnits));
-            statement = QUOTE([ARR_2(_objects,_args)] call FUNC(healUnits));
-            icon = QPATHTOF(ui\medical_cross_ca.paa);
-            args = HEAL_MODE_ALL;
-        };
-        class Players: All {
-            displayName = ECSTRING(modules,Players);
-            args = HEAL_MODE_PLAYERS;
-        };
-        class AI: All {
-            displayName = "$STR_Team_Switch_AI";
-            args = HEAL_MODE_AI;
-        };
-    };
-    class Captives {
-        displayName = CSTRING(Captives);
-        condition = QUOTE(isClass (configFile >> 'CfgPatches' >> 'ace_captives'));
-        icon = "\z\ace\addons\captives\UI\handcuff_ca.paa";
-        priority = 50;
-        class ToggleCaptive {
-            displayName = CSTRING(ToggleCaptive);
-            condition = QUOTE(_objects findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1);
-            statement = QUOTE(_objects call FUNC(toggleCaptive));
-            icon = "\z\ace\addons\captives\UI\handcuff_ca.paa";
-        };
-        class ToggleSurrender {
-            displayName = CSTRING(ToggleSurrender);
-            condition = QUOTE(_objects call FUNC(canToggleSurrender));
-            statement = QUOTE(_objects call FUNC(toggleSurrender));
-            icon = "\z\ace\addons\captives\UI\Surrender_ca.paa";
         };
     };
     class Loadout {
