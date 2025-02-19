@@ -11,58 +11,7 @@ class EGVAR(context_menu,actions) {
         insertChildren = QUOTE(_objects call FUNC(getGrenadeActions));
         priority = 70;
     };
-    class Formation {
-        displayName = "$STR_3DEN_Group_Attribute_Formation_displayName";
-        condition = QUOTE(_groups findIf {units _x findIf {!isPlayer _x} != -1} != -1);
-        icon = "\a3\3den\data\displays\display3den\entitymenu\movetoformation_ca.paa";
-        priority = 60;
-        class Wedge {
-            displayName = "$STR_wedge";
-            statement = QUOTE([ARR_2(_groups,_args)] call FUNC(setFormation));
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\wedge_ca.paa";
-            args = "WEDGE";
-        };
-        class Vee: Wedge {
-            displayName = "$STR_vee";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\vee_ca.paa";
-            args = "VEE";
-        };
-        class Line: Wedge {
-            displayName = "$STR_line";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\line_ca.paa";
-            args = "LINE";
-        };
-        class Column: Wedge {
-            displayName = "$STR_column";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\column_ca.paa";
-            args = "COLUMN";
-        };
-        class File: Wedge {
-            displayName = "$STR_file";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\file_ca.paa";
-            args = "FILE";
-        };
-        class StagColumn: Wedge {
-            displayName = "$STR_staggered";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\stag_column_ca.paa";
-            args = "STAG COLUMN";
-        };
-        class EchLeft: Wedge {
-            displayName = "$STR_echl";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\ech_left_ca.paa";
-            args = "ECH LEFT";
-        };
-        class EchRight: Wedge {
-            displayName = "$STR_echr";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\ech_right_ca.paa";
-            args = "ECH RIGHT";
-        };
-        class Diamond: Wedge {
-            displayName = "$STR_diamond";
-            icon = "\a3\Ui_F_Curator\Data\RscCommon\RscAttributeFormation\diamond_ca.paa";
-            args = "DIAMOND";
-        };
-    };
+    
     class Behaviour {
         displayName = "$STR_3DEN_Group_Attribute_Behaviour_displayName";
         condition = QUOTE(_groups findIf {units _x findIf {!isPlayer _x} != -1} != -1);
@@ -325,24 +274,6 @@ class EGVAR(context_menu,actions) {
         displayName = CSTRING(VehicleLogistics);
         icon = "\a3\ui_f\data\igui\cfg\simpleTasks\types\truck_ca.paa";
         priority = 37;
-        class Repair {
-            displayName = "$STR_Repair";
-            condition = QUOTE(_objects call FUNC(canRepairVehicles));
-            statement = QUOTE(_objects call FUNC(repairVehicles));
-            icon = "\a3\ui_f\data\igui\cfg\simpleTasks\types\repair_ca.paa";
-        };
-        class Rearm {
-            displayName = "$STR_Rearm";
-            condition = QUOTE(_objects call FUNC(canRearmVehicles));
-            statement = QUOTE(_objects call FUNC(rearmVehicles));
-            icon = "\a3\ui_f\data\igui\cfg\simpleTasks\types\rearm_ca.paa";
-        };
-        class Refuel {
-            displayName = "$STR_Refuel";
-            condition = QUOTE(_objects call FUNC(canRefuelVehicles));
-            statement = QUOTE(_objects call FUNC(refuelVehicles));
-            icon = "\a3\ui_f\data\igui\cfg\simpleTasks\types\refuel_ca.paa";
-        };
         class SwitchWeapon {
             displayName = "$STR_A3_Switch1";
             icon = "\a3\ui_f\data\GUI\Cfg\Hints\VehicleAmmo_CA.paa";
@@ -408,20 +339,6 @@ class EGVAR(context_menu,actions) {
                 args = 250;
             };
         };
-    };
-    class RemoteControl {
-        displayName = "$STR_A3_CfgVehicles_ModuleRemoteControl_F";
-        condition = QUOTE(_hoveredEntity call EFUNC(remote_control,canControl));
-        statement = QUOTE(_hoveredEntity call EFUNC(remote_control,start));
-        icon = "\a3\modules_f_curator\data\portraitremotecontrol_ca.paa";
-        priority = 20;
-    };
-    class TeleportPlayers {
-        displayName = CSTRING(TeleportPlayers);
-        condition = QUOTE(_objects findIf {isPlayer _x} != -1);
-        statement = QUOTE(_objects call FUNC(teleportPlayers));
-        icon = QPATHTOF(ui\marker_ca.paa);
-        priority = 10;
     };
     class TeleportZeus {
         displayName = CSTRING(TeleportZeus);
