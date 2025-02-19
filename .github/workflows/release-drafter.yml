@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release Drafter
-        if: github.repository == 'zen-mod/ZEN'
+        if: github.repository == 'Piq-Pen/ZEN'
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
