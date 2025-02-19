@@ -9,7 +9,6 @@ PREP(displayCuratorLoad);
 PREP(displayCuratorUnload);
 PREP(drawHint);
 PREP(dumpPerformanceCounters);
-PREP(earthquake);
 PREP(ejectPassengers);
 PREP(exportMissionSQF);
 PREP(exportText);
