@@ -19,5 +19,5 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Accept: application/json" \
             -X POST \
-            -d '{"organisation": "Piq-Pen", "repository": "ZEN", "workflow_id": 650750}' \
+            -d '{"organisation": "zen-mod", "repository": "ZEN", "workflow_id": 650750}' \
             "$REZENT_URI"
